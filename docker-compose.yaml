@@ -3,13 +3,8 @@ services:
   mongo:
     image: mongo
     hostname: mongo
-#    environment:
-#      MONGO_INITDB_DATABASE: ss-processing
-#      MONGO_INITDB_ROOT_USERNAME: test_user
-#      MONGO_INITDB_ROOT_PASSWORD: test_pwd
     ports:
     - "27017:27017"
-#    entrypoint: [ "/usr/bin/mongod", "--replSet", "rs0", "--bind_ip", "localhost:27017"]
     healthcheck:
       test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
       interval: 10s
